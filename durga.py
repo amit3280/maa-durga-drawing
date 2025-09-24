@@ -1,5 +1,6 @@
 #drawing Maa Durga Using Python Code
 import turtle as t
+
 t.bgcolor("gold")
 def pos(x,y):
     t.penup()
@@ -202,3 +203,4 @@ for i in range(47):
     t.back(10)
 t.hideturtle()
 t.exitonclick()
+
