@@ -204,3 +204,10 @@ for i in range(47):
 t.hideturtle()
 t.exitonclick()
 
+
+canvas = t.getcanvas()
+canvas.postscript(file="durga.ps")
+from PIL import Image
+img = Image.open("durga.ps")
+img.save("durga.png")
+
