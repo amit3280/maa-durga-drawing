@@ -1,71 +1,64 @@
+# app.py
 import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-st.title("🕉️ Maa Durga Drawing (Matplotlib version)")
+st.set_page_config(page_title="Maa Durga Drawing")
+
+st.title("🕉️ Maa Durga Drawing (Matplotlib Version)")
 
 # Create figure
-fig, ax = plt.subplots(figsize=(6, 8))
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.set_facecolor("gold")
 ax.set_xlim(-200, 200)
-ax.set_ylim(-200, 300)
-ax.set_aspect("equal")
+ax.set_ylim(-200, 200)
 ax.axis("off")
 
 # --------------------
-# Tika / Bindi
+# Tika (Red Circle)
 # --------------------
-bindi = patches.Circle((0, 220), 40, color="red")
-ax.add_patch(bindi)
+tika = patches.Circle((0, 120), 25, color="red")
+ax.add_patch(tika)
 
 # --------------------
 # Eyes
 # --------------------
-# Left Eye
-left_eye = patches.Circle((-80, 100), 50, color="black")
+# Left eye (outer shape like almond)
+left_eye = patches.Ellipse((-70, 40), 100, 50, color="white")
 ax.add_patch(left_eye)
-left_pupil = patches.Circle((-60, 120), 15, color="white")
-ax.add_patch(left_pupil)
+ax.add_patch(patches.Ellipse((-70, 40), 40, 40, color="black"))  # pupil
+ax.add_patch(patches.Circle((-55, 50), 10, color="white"))       # shine
 
-# Right Eye
-right_eye = patches.Circle((80, 100), 50, color="black")
+# Right eye
+right_eye = patches.Ellipse((70, 40), 100, 50, color="white")
 ax.add_patch(right_eye)
-right_pupil = patches.Circle((60, 120), 15, color="white")
-ax.add_patch(right_pupil)
+ax.add_patch(patches.Ellipse((70, 40), 40, 40, color="black"))   # pupil
+ax.add_patch(patches.Circle((55, 50), 10, color="white"))        # shine
 
-# --------------------
 # Eyebrows
-# --------------------
-left_brow = patches.Arc((-80, 160), 120, 40, angle=0, theta1=200, theta2=340, linewidth=6, color="black")
-ax.add_patch(left_brow)
-right_brow = patches.Arc((80, 160), 120, 40, angle=0, theta1=200, theta2=340, linewidth=6, color="black")
-ax.add_patch(right_brow)
+ax.plot([-120, -20], [80, 90], color="black", linewidth=8)
+ax.plot([20, 120], [90, 80], color="black", linewidth=8)
 
 # --------------------
-# Nose
+# Nose (curve)
 # --------------------
-nose = patches.Arc((0, 40), 40, 80, angle=0, theta1=200, theta2=340, linewidth=5, color="black")
+nose = patches.Arc((0, 0), 40, 60, theta1=200, theta2=340, color="black", linewidth=4)
 ax.add_patch(nose)
 
 # --------------------
 # Lips
 # --------------------
-upper_lip = patches.Arc((0, -40), 120, 60, angle=0, theta1=0, theta2=180, linewidth=5, color="red")
+upper_lip = patches.Arc((0, -60), 120, 40, theta1=0, theta2=180, color="red", linewidth=8)
+lower_lip = patches.Arc((0, -70), 120, 40, theta1=180, theta2=360, color="red", linewidth=8)
 ax.add_patch(upper_lip)
-lower_lip = patches.Arc((0, -60), 120, 60, angle=0, theta1=180, theta2=360, linewidth=5, color="red")
 ax.add_patch(lower_lip)
 
 # --------------------
 # Nose Ring
 # --------------------
-nosering = patches.Arc((40, 20), 150, 150, angle=0, theta1=200, theta2=360, linewidth=8, color="gold")
+nosering = patches.Arc((50, -20), 140, 140, theta1=30, theta2=270, color="yellow", linewidth=6)
 ax.add_patch(nosering)
 
-# --------------------
-# Crown (triangle)
-# --------------------
-crown = patches.RegularPolygon((0, 280), numVertices=3, radius=100, orientation=0, color="orange")
-ax.add_patch(crown)
-
-# Show in Streamlit
+# Show figure in Streamlit
 st.pyplot(fig)
 
