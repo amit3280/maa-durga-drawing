@@ -1,31 +1,35 @@
-# app.py
 import turtle
-import streamlit as st
-import io
 from PIL import Image
+import streamlit as st
 
-st.title("Maa Durga Drawing with Python 🕉️")
+st.set_page_config(page_title="Maa Durga Drawing", page_icon="🕉️", layout="centered")
+st.title("🕉️ Maa Durga Drawing with Python Turtle")
 
-# Set up turtle screen
+# Hide the main turtle screen
 screen = turtle.Screen()
+screen.setup(width=600, height=600)
 canvas = screen.getcanvas()
 
 t = turtle.Turtle()
 t.hideturtle()
 t.speed(0)
 
-# Example small drawing
+# --- Example: Replace this with your Durga drawing ---
 t.color("red")
 t.begin_fill()
-t.circle(50)
+t.circle(100)
 t.end_fill()
+# ----------------------------------------------------
 
-# Save turtle canvas as postscript
+# Save as PostScript
 canvas.postscript(file="durga.ps")
 
-# Convert to PNG for Streamlit
+# Convert to PNG
 img = Image.open("durga.ps")
 img.save("durga.png")
 
-st.image("durga.png", caption="Maa Durga")
+# Show in Streamlit
+st.image("durga.png", caption="Maa Durga (drawn with Python Turtle)", use_column_width=True)
+
+st.success("Drawing rendered successfully ✅")
 
