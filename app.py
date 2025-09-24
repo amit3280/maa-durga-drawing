@@ -3,7 +3,10 @@ from PIL import Image
 import streamlit as st
 
 st.set_page_config(page_title="Maa Durga Drawing", page_icon="🕉️", layout="centered")
-st.title("🕉️ Maa Durga Drawing with Python Turtle")
+#st.title("🕉️ Maa Durga Drawing with Python Turtle")
+
+st.title("🕉️ Maa Durga Drawing")
+st.image("durga.png", caption="Maa Durga", use_column_width=True)
 
 # --- Utility function for positioning ---
 def pos(x, y):
